@@ -110,8 +110,25 @@ public class TinderService implements ServiceLayer {
 
 	@Override
 	@Transactional
-	public List<UserBuffer> getpotentialmatchlist(String sexualpreference, int id) {
+	public List<UserBuffer> getpotentialmatchlist(String sexualpreference, int id,String userGender) {
 		
+		if(userGender=="male") {
+			if(sexualpreference=="straight")
+				return tinderdao.getPotentialStraightFemales(id);
+			else if(sexualpreference=="gay")
+				return tinderdao.getPotentialGayMales(id);
+		}
+		
+		if(userGender=="female") {
+			if(sexualpreference=="straight")
+				return tinderdao.getPotentialStraightMales(id);
+			else if(sexualpreference=="gay")
+				return tinderdao.getPotentialGayFemales(id);
+		}
+		
+		else if(sexualpreference=="bisexual" || sexualpreference=="pansexual") {
+			return tinderdao.getPotentialBiSexualList(id);
+		}
 		return tinderdao.getpotentialmatchlist(sexualpreference, id);
 	}
 

@@ -23,7 +23,7 @@ public interface ServiceLayer {
 	
 	
 
-	List<UserBuffer> getpotentialmatchlist(String sexualpreference, int id);
+	List<UserBuffer> getpotentialmatchlist(String sexualpreference, int id,String userGender);
 
 	void maplikeandlikeddata(int user_entity_id, int buffer_user_id);
 

@@ -126,7 +126,55 @@ public class TinderDAO implements DAO {
 		
 		return theList;
 	}
+	
+	@Override
+	public List<UserBuffer> getPotentialStraightFemales(int userid){
+		Session session=sessionFactory.getCurrentSession();
+		Query<UserBuffer> list=session.createQuery("from UserBuffer u where u.sexualorientation='straight' and u.sex='female'");
+		List<UserBuffer> theList=list.getResultList();
+		
+		return theList;
+	}
+	
+	@Override
+	public List<UserBuffer> getPotentialStraightMales(int userid){
+		Session session=sessionFactory.getCurrentSession();
+		Query<UserBuffer> list=session.createQuery("from UserBuffer u where u.sexualorientation='straight' and u.sex='male'");
+		List<UserBuffer> theList=list.getResultList();
+		
+		return theList;
+	}
 
+	@Override
+	public List<UserBuffer> getPotentialGayMales(int userid){
+		Session session=sessionFactory.getCurrentSession();
+		Query<UserBuffer> list=session.createQuery("from UserBuffer u where u.sexualorientation='gay' and u.sex='male' and u.id not in (\'"+userid+"\')");
+		List<UserBuffer> theList=list.getResultList();
+		
+		return theList;
+	}
+	
+	@Override
+	public List<UserBuffer> getPotentialGayFemales(int userid){
+		Session session=sessionFactory.getCurrentSession();
+		Query<UserBuffer> list=session.createQuery("from UserBuffer u where u.sexualorientation='gay' and u.sex='female' and u.id not in (\'"+userid+"\')");
+		List<UserBuffer> theList=list.getResultList();
+		
+		return theList;
+	}
+	
+	@Override
+	public List<UserBuffer> getPotentialBiSexualList(int userid){
+		Session session=sessionFactory.getCurrentSession();
+		Query<UserBuffer> list=session.createQuery("from UserBuffer u where u.sexualorientation in ('bisexual','pansexual') and u.id not in (\'"+userid+"\')");
+		List<UserBuffer> theList=list.getResultList();
+		
+		return theList;
+		
+	}
+	
+	
+	
 	@Override
 	public void maplikeandlikeddata(int user_entity_id, int buffer_user_id) {
 		Session session=sessionFactory.getCurrentSession();

@@ -28,4 +28,14 @@ public interface DAO {
 
 	UserBuffer retrivesecretadmirer(int user_buffer_id);
 
+	List<UserBuffer> getPotentialStraightFemales(int userid);
+
+	List<UserBuffer> getPotentialGayMales(int userid);
+
+	List<UserBuffer> getPotentialStraightMales(int userid);
+
+	List<UserBuffer> getPotentialGayFemales(int userid);
+
+	List<UserBuffer> getPotentialBiSexualList(int userid);
+
 }

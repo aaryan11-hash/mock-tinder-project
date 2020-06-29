@@ -71,7 +71,7 @@ public class TinderDefaultController {
 			
 			List<UserBuffer> matchedlist=helper.matches(admirer,liked,ControllerUser.getId());
 			
-			List<UserBuffer> potentialmatchlist=service.getpotentialmatchlist(retrivedlistuser.getSexualpreference(),retrivedlistuser.getId());
+			List<UserBuffer> potentialmatchlist=service.getpotentialmatchlist(ControllerUser.getSexualpreference(),ControllerUser.getId(),ControllerUser.getSex());
 			
 			List<UserBuffer> finalPotentialmatchlist=helper.getUnlikedUsersOnly(matchedlist, potentialmatchlist);
 			
@@ -98,7 +98,7 @@ public class TinderDefaultController {
 		
 		List<UserBuffer> matchedlist=helper.matches(admirer,liked,ControllerUser.getId());
 		
-		List<UserBuffer> potentialmatchlist=service.getpotentialmatchlist(ControllerUser.getSexualpreference(),ControllerUser.getId());
+		List<UserBuffer> potentialmatchlist=service.getpotentialmatchlist(ControllerUser.getSexualpreference(),ControllerUser.getId(),ControllerUser.getSex());
 		List<UserBuffer> finalPotentialmatchlist=helper.getUnlikedUsersOnly(matchedlist, potentialmatchlist);
 		
 		model.addAttribute("retriveduser",ControllerUser);
